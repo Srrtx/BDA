@@ -2,8 +2,9 @@ import streamlit as st
 import pickle
 import matplotlib.pyplot as plt
 import pandas as pd
+from sklearn.preprocessing import LabelEncoder
 
-#Ste the page config
+#Set the page config
 st.set_page_config(page_title="K-Means Clustering", layout="centered")
 
 #Load model 
@@ -16,13 +17,24 @@ st.title("K-Means Clustering Visualizer Customer Segmentation")
 #Load Dataset
 df = pd.read_csv('marketing_campaign.csv')
 
-# Define feature names
+# Encode categorical variables
+le = LabelEncoder()
+df['Education'] = le.fit_transform(df['Education'])
+df['Marital_Status'] = le.fit_transform(df['Marital_Status'])
+
+# Define feature names (make sure these match exactly with DataFrame columns)
 feature_names = ['Year_Birth', 'Education', 'Marital_Status', 'Income', 'Kidhome', 
                 'Teenhome', 'Recency', 'MntWines', 'MntFruits', 'MntMeatProducts',
                 'MntFishProducts', 'MntSweetProducts', 'MntGoldProds', 'NumDealsPurchases',
                 'NumWebPurchases', 'NumCatalogPurchases', 'NumStorePurchases', 
                 'NumWebVisitsMonth', 'AcceptedCmp3', 'AcceptedCmp4', 'AcceptedCmp5',
                 'AcceptedCmp1', 'AcceptedCmp2', 'Complain', 'Response']
+
+# Verify columns exist in DataFrame
+missing_cols = [col for col in feature_names if col not in df.columns]
+if missing_cols:
+    st.error(f"Missing columns in dataset: {missing_cols}")
+    st.stop()
 
 # Get the feature columns for clustering
 X = df[feature_names].values
