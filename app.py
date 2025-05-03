@@ -15,7 +15,7 @@ with open('kmeans_model.pkl','rb') as f:
 st.title("K-Means Clustering Visualizer Customer Segmentation")
 
 #Load Dataset
-# df = pd.read_csv('marketing_campaign.csv')
+df = pd.read_csv('marketing_campaign.csv')
 
 
 # Define feature names (make sure these match exactly with DataFrame columns)
