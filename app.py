@@ -44,7 +44,7 @@ df = pd.read_csv('marketing_campaign.csv')
 # y_idx = feature_names.index(y_axis)
 
 #Predict using the loaded model
-y_kmeans = loaded_model.predict(X)
+# y_kmeans = loaded_model.predict(X)
 
 #plotting
 fig, ax = plt.subplots()
