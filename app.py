@@ -15,21 +15,8 @@ with open('kmeans_model.pkl','rb') as f:
 st.title("K-Means Clustering Visualizer Customer Segmentation")
 
 #Load Dataset
-df = pd.read_csv('marketing_campaign.csv')
+# df = pd.read_csv('marketing_campaign.csv')
 
-# Print column names to debug
-st.write("Available columns:", df.columns.tolist())
-
-# Check if columns exist before encoding
-if 'Education' in df.columns and 'Marital_Status' in df.columns:
-    # Encode categorical variables
-    le = LabelEncoder()
-    df['Education'] = le.fit_transform(df['Education'])
-    df['Marital_Status'] = le.fit_transform(df['Marital_Status'])
-else:
-    st.error("Required columns 'Education' or 'Marital_Status' not found in dataset")
-    st.write("Please check the exact column names in your CSV file")
-    st.stop()
 
 # Define feature names (make sure these match exactly with DataFrame columns)
 feature_names = ['Year_Birth', 'Education', 'Marital_Status', 'Income', 'Kidhome', 
