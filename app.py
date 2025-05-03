@@ -19,29 +19,29 @@ df = pd.read_csv('marketing_campaign.csv')
 
 
 # Define feature names (make sure these match exactly with DataFrame columns)
-feature_names = ['Year_Birth', 'Education', 'Marital_Status', 'Income', 'Kidhome', 
-                'Teenhome', 'Recency', 'MntWines', 'MntFruits', 'MntMeatProducts',
-                'MntFishProducts', 'MntSweetProducts', 'MntGoldProds', 'NumDealsPurchases',
-                'NumWebPurchases', 'NumCatalogPurchases', 'NumStorePurchases', 
-                'NumWebVisitsMonth', 'AcceptedCmp3', 'AcceptedCmp4', 'AcceptedCmp5',
-                'AcceptedCmp1', 'AcceptedCmp2', 'Complain', 'Response']
+#feature_names = ['Year_Birth', 'Education', 'Marital_Status', 'Income', 'Kidhome', 
+#               'Teenhome', 'Recency', 'MntWines', 'MntFruits', 'MntMeatProducts',
+#                'MntFishProducts', 'MntSweetProducts', 'MntGoldProds', 'NumDealsPurchases',
+#                'NumWebPurchases', 'NumCatalogPurchases', 'NumStorePurchases', 
+#                'NumWebVisitsMonth', 'AcceptedCmp3', 'AcceptedCmp4', 'AcceptedCmp5',
+#                'AcceptedCmp1', 'AcceptedCmp2', 'Complain', 'Response']
 
 # Verify columns exist in DataFrame
-missing_cols = [col for col in feature_names if col not in df.columns]
-if missing_cols:
-    st.error(f"Missing columns in dataset: {missing_cols}")
-    st.stop()
+# missing_cols = [col for col in feature_names if col not in df.columns]
+# if missing_cols:
+#     st.error(f"Missing columns in dataset: {missing_cols}")
+#     st.stop()
 
 # Get the feature columns for clustering
-X = df[feature_names].values
+# X = df[feature_names].values
 
 # Add feature selection dropdowns
-x_axis = st.selectbox('Select X-axis feature', feature_names)
-y_axis = st.selectbox('Select Y-axis feature', feature_names)
+# x_axis = st.selectbox('Select X-axis feature', feature_names)
+# y_axis = st.selectbox('Select Y-axis feature', feature_names)
 
-# Get feature indices
-x_idx = feature_names.index(x_axis)
-y_idx = feature_names.index(y_axis)
+# # Get feature indices
+# x_idx = feature_names.index(x_axis)
+# y_idx = feature_names.index(y_axis)
 
 #Predict using the loaded model
 y_kmeans = loaded_model.predict(X)
